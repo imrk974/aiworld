@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Tools Directory | AIWorld.com</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #0f172a;
+      color: #e0e0e0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: slideDownFade 1s ease forwards 0.5s;
+    }
+    @keyframes slideDownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 2.8rem;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 7px rgba(139,92,246,0.7);
+    }
+    header p {
+      font-weight: 400;
+      font-size: 1.2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.5;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 15px 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .tool {
+      background: #1e293b;
+      border: 2px solid #4f46f4;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(79, 70, 229, 0.2);
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: var(--delay);
+      user-select: none;
+    }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tool-link {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 22px 25px;
+      height: 100%;
+      border-radius: 16px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    }
+    .tool-link:hover {
+      color: #edeffe;
+      box-shadow: 0 10px 30px rgba(124, 58, 237, 0.7);
+      background: linear-gradient(135deg, #2f3457, #1c202f);
+      transform: translateY(-5px);
+      outline: none;
+    }
+
+    .tool-link:hover img {
+      filter: drop-shadow(0 0 10px #a16fff);
+    }
+
+    .tool-link img {
+      max-width: 120px;
+      height: auto;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(79, 70, 229, 0.4);
+      filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+      transition: filter 0.3s ease;
+    }
+
+    .tool-link h2 {
+      margin: 0 0 8px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      user-select: text;
+    }
+
+    .tool-link p.price {
+      margin: 0 0 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: text;
+      color: #c2c7f0;
+    }
+
+    .tool-link p.description {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #9e9eba;
+      line-height: 1.4;
+      user-select: text;
+      flex-grow: 1;
+      overflow-y: auto;
+      max-height: 8em;
+    }
+
+    .tool-link p.description::-webkit-scrollbar {
+      width: 6px;
+    }
+    .tool-link p.description::-webkit-scrollbar-thumb {
+      background: #7b64f5;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .tool-link h2 {
+        font-size: 1rem;
+      }
+      .tool-link p.price {
+        font-size: 0.9rem;
+      }
+      .tool-link p.description {
+        font-size: 0.8rem;
+        max-height: 6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Tools Directory</h1>
+    <p>Explore a curated selection of AI tools with detailed descriptions, pricing, and official links.</p>
+  </header>
+  <main>
+    <div class="grid">
+
+      <div class="tool" style="--delay: 0;">
+        <a href="https://chatgpt.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/openai.com" alt="ChatGPT Logo" />
+          <h2>ChatGPT</h2>
+          <p class="price">Pricing: Free plan available, Premium from $20/month</p>
+          <p class="description">ChatGPT, developed by OpenAI, is a conversational AI model excelling in natural language understanding and generation. It assists with tasks like answering questions, drafting text, coding, and brainstorming ideas. It offers a user-friendly interface and powerful capabilities.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.1s;">
+        <a href="https://claude.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/claude.ai" alt="Claude Logo" />
+          <h2>Claude</h2>
+          <p class="price">Pricing: Free plan available, Premium from $20/month</p>
+          <p class="description">Claude, created by Anthropic, is a conversational AI designed for safe and helpful responses. It offers robust text generation for writers and businesses focusing on ethical AI.</p>
+        </a>
+      </div>
+      <div class="tool" style="--delay: 0.15s;">
+        <a href="https://gemini.google.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/google.com" alt="Gemini Logo" />
+          <h2>Gemini</h2>
+          <p class="price">Pricing: From $19.99/month</p>
+          <p class="description">Gemini is Google’s advanced AI model integrating search, content creation, and automation with real-time insights and multimodal inputs.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.2s;">
+        <a href="https://www.synthesia.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/synthesia.io" alt="Synthesia Logo" />
+          <h2>Synthesia</h2>
+          <p class="price">Pricing: Free plan, Premium from $29/month</p>
+          <p class="description">Synthesia is an AI video platform creating professional videos from text, offering avatars and multilingual support for marketing and education.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.25s;">
+        <a href="https://www.midjourney.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/midjourney.com" alt="Midjourney Logo" />
+          <h2>Midjourney</h2>
+          <p class="price">Pricing: From $10/month</p>
+          <p class="description">Midjourney creates photorealistic AI-generated images from text prompts via Discord, popular among artists and marketers.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.3s;">
+        <a href="https://www.fathom.video" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/fathom.video" alt="Fathom Logo" />
+          <h2>Fathom</h2>
+          <p class="price">Pricing: Free plan, Premium from $19/month</p>
+          <p class="description">Fathom records and summarizes meetings with AI, integrates with Zoom/MS Teams, and saves time for remote teams.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.35s;">
+        <a href="https://www.nyota.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/nyota.ai" alt="Nyota Logo" />
+          <h2>Nyota</h2>
+          <p class="price">Pricing: From $12/month</p>
+          <p class="description">Nyota streamlines meeting workflows with AI-transcripts, summaries, and follow-up suggestions integrated into team tools.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.4s;">
+        <a href="https://n8n.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/n8n.io" alt="n8n Logo" />
+          <h2>n8n</h2>
+          <p class="price">Pricing: From €20/month</p>
+          <p class="description">n8n is an open-source workflow automation tool with visual interface and many app integrations for automation enthusiasts.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.45s;">
+        <a href="https://manus.im" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/manus.im" alt="Manus Logo" />
+          <h2>Manus</h2>
+          <p class="price">Pricing: From $16/month</p>
+          <p class="description">Manus helps create high-quality, context-aware writing for blogs, emails, and marketing copy with tone and SEO optimization.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.5s;">
+        <a href="https://rytr.me" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/rytr.me" alt="Rytr Logo" />
+          <h2>Rytr</h2>
+          <p class="price">Pricing: From $9/month</p>
+          <p class="description">Rytr is an AI writing assistant for short-form content, supporting many templates and languages with plagiarism checking.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.55s;">
+        <a href="https://sudowrite.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/sudowrite.com" alt="Sudowrite Logo" />
+          <h2>Sudowrite</h2>
+          <p class="price">Pricing: From $19/month</p>
+          <p class="description">Sudowrite aids creative writers with features like outlining, character development, expansion, and story suggestions.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.6s;">
+        <a href="https://www.perplexity.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/perplexity.ai" alt="Perplexity Logo" />
+          <h2>Perplexity</h2>
+          <p class="price">Pricing: Free & Pro plans</p>
+          <p class="description">Perplexity is an AI-powered search assistant that delivers concise, sourced answers by synthesizing web data.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.65s;">
+        <a href="https://www.canva.com/magic" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/canva.com" alt="Canva Magic Studio Logo" />
+          <h2>Canva Magic Studio</h2>
+          <p class="price">Pricing: Free & Pro tiers from $15/month</p>
+          <p class="description">Canva Magic Studio offers AI-assisted design tools for images, background removal, and text-to-graphics, friendly for all skill levels.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.7s;">
+        <a href="https://elevenlabs.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/elevenlabs.io" alt="ElevenLabs Logo" />
+          <h2>ElevenLabs</h2>
+          <p class="price">Pricing: Free up to 10k credits, paid plans from $5/month</p>
+          <p class="description">ElevenLabs provides top-quality text-to-speech voice generation supporting multiple languages and voice cloning.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.75s;">
+        <a href="https://www.jasper.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/jasper.ai" alt="Jasper AI Logo" />
+          <h2>Jasper AI</h2>
+          <p class="price">Pricing: From $49/month</p>
+          <p class="description">Jasper AI is a powerful AI writing tool for marketing teams creating SEO-optimized copy, blog content, and ads at scale.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.8s;">
+        <a href="https://www.notion.so/product/ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/notion.so" alt="Notion Q&A Logo" />
+          <h2>Notion Q&A</h2>
+          <p class="price">Pricing: From $10/user/month</p>
+          <p class="description">Notion Q&A lets teams query and summarize their Notion workspace content instantly using AI-powered searches.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.85s;">
+        <a href="https://www.hubspot.com/products/marketing/ai-email-writer" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/hubspot.com" alt="Hubspot AI Email Writer Logo" />
+          <h2>Hubspot AI Email Writer</h2>
+          <p class="price">Pricing: Free & advanced from $15/month</p>
+          <p class="description">AI-powered tool integrated with Hubspot CRM to create personalized emails with optimized subject lines and messaging.</p>
+        </a>
+      </div>
+      <div class="tool" style="--delay: 0.9s;">
+        <a href="https://reclaim.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/reclaim.ai" alt="Reclaim Logo" />
+          <h2>Reclaim</h2>
+          <p class="price">Pricing: Free Lite Plan, Starter from $10/user/month</p>
+          <p class="description">Reclaim is an AI scheduling assistant that optimizes calendars and blocks time for focus by integrating with Google Calendar.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 0.95s;">
+        <a href="https://www.adcreative.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/adcreative.ai" alt="AdCreative Logo" />
+          <h2>AdCreative</h2>
+          <p class="price">Pricing: From $39/month</p>
+          <p class="description">AI platform generating tailored ad creatives for Facebook, Instagram, and Google Ads, optimizing campaigns with A/B testing.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1s;">
+        <a href="https://www.renderforest.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/renderforest.com" alt="Renderforest Logo" />
+          <h2>Renderforest</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">Create videos, logos, and websites easily with AI-assisted templates and editor, perfect for startups and content creators.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.05s;">
+        <a href="https://www.deepl.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/deepl.com" alt="DeepL Logo" />
+          <h2>DeepL</h2>
+          <p class="price">Pricing: Free plan, Pro from $8.74/month</p>
+          <p class="description">High-accuracy translation tool supporting 32 languages; offers text and document translations with tone adjustments.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.1s;">
+        <a href="https://quillbot.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/quillbot.com" alt="QuillBot Logo" />
+          <h2>QuillBot</h2>
+          <p class="price">Pricing: Free plan, Premium from $9.95/month</p>
+          <p class="description">AI paraphrasing, grammar checking, summarization and plagiarism detection tool for writing enhancement.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.15s;">
+        <a href="https://www.copy.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/copy.ai" alt="Copy.ai Logo" />
+          <h2>Copy.ai</h2>
+          <p class="price">Pricing: Free plan, Pro from $36/month</p>
+          <p class="description">AI content generation focused on marketing copy, social media posts, and emails with tone and language customization.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.2s;">
+        <a href="https://writesonic.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/writesonic.com" alt="Writesonic Logo" />
+          <h2>Writesonic</h2>
+          <p class="price">Pricing: Free plan, Premium from $16/month</p>
+          <p class="description">Generates SEO-friendly blog posts, ads, and social media content, includes Chatsonic chatbot and multilingual support.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.25s;">
+        <a href="https://10web.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/10web.io" alt="10Web Logo" />
+          <h2>10Web</h2>
+          <p class="price">Pricing: Free plan, Premium from $10/month</p>
+          <p class="description">AI-automated website builder with responsive design, SEO, branding, and speed optimizations.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.3s;">
+        <a href="https://lumen5.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/lumen5.com" alt="Lumen5 Logo" />
+          <h2>Lumen5</h2>
+          <p class="price">Pricing: Free plan, Premium from $19/month</p>
+          <p class="description">AI video creation platform transforming text into engaging videos with visuals and music for marketing.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.35s;">
+        <a href="https://runwayml.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/runwayml.com" alt="Runway Logo" />
+          <h2>Runway</h2>
+          <p class="price">Pricing: Free plan, Pro from $15/month</p>
+          <p class="description">AI creative editing platform offering text-to-video, image generation, background removal and more for pros.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.4s;">
+        <a href="https://openai.com/dall-e" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/openai.com" alt="DALL·E Logo" />
+          <h2>DALL·E</h2>
+          <p class="price">Pricing: From $15/115 credits</p>
+          <p class="description">OpenAI’s AI image generation tool creating detailed, creative visuals from text prompts integrated with ChatGPT.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.45s;">
+        <a href="https://www.grammarly.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/grammarly.com" alt="Grammarly Logo" />
+          <h2>Grammarly</h2>
+          <p class="price">Pricing: Free plan, Premium from $12/month</p>
+          <p class="description">AI-powered writing assistant for grammar, style, and tone improvements across devices and platforms.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.5s;">
+        <a href="https://zapier.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/zapier.com" alt="Zapier Logo" />
+          <h2>Zapier</h2>
+          <p class="price">Pricing: Free plan, Pro from $19.99/month</p>
+          <p class="description">AI-enhanced workflow automation connecting thousands of apps without coding to save time on repetitive tasks.</p>
+        </a>
+      </div>
+      <div class="tool" style="--delay: 1.55s;">
+        <a href="https://invideo.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/invideo.io" alt="InVideo Logo" />
+          <h2>InVideo</h2>
+          <p class="price">Pricing: Free plan, Plus from $20/month</p>
+          <p class="description">AI-powered video editing platform with templates, stock footage, and script suggestions for social media and marketing.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.6s;">
+        <a href="https://humanize.im" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/humanize.im" alt="Humanize.im Logo" />
+          <h2>Humanize.im</h2>
+          <p class="price">Pricing: Free plan, Premium from $10/month</p>
+          <p class="description">Transforms AI-generated text into natural, human-like prose, enhancing authenticity for blogs, marketing copy, and posts.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.65s;">
+        <a href="https://beautiful.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/beautiful.ai" alt="Beautiful.ai Logo" />
+          <h2>Beautiful.ai</h2>
+          <p class="price">Pricing: Free plan, Pro from $12/month</p>
+          <p class="description">AI presentation tool with smart templates and auto-formatting to quickly create visually appealing slides.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.7s;">
+        <a href="https://dora.run" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/dora.run" alt="Dora Logo" />
+          <h2>Dora</h2>
+          <p class="price">Pricing: Free plan, Pro from $15/month</p>
+          <p class="description">No-code AI website builder focused on interactive, 3D, and animated websites using drag-and-drop and AI suggestions.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.75s;">
+        <a href="https://wegic.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/wegic.ai" alt="Wegic Logo" />
+          <h2>Wegic</h2>
+          <p class="price">Pricing: Free plan, Premium: see website</p>
+          <p class="description">AI-powered website builder creating responsive sites from text or conversation prompts, with SEO and content management.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.8s;">
+        <a href="https://framer.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/framer.com" alt="Framer Logo" />
+          <h2>Framer</h2>
+          <p class="price">Pricing: Free plan, Pro from $9/month</p>
+          <p class="description">AI-enhanced design/prototyping tool offering no-code design with AI layouts, animations, and CMS integration.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.85s;">
+        <a href="https://durable.co" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/durable.co" alt="Durable Logo" />
+          <h2>Durable</h2>
+          <p class="price">Pricing: Free plan, Starter from $12/month</p>
+          <p class="description">AI website builder generates complete websites in seconds from prompts with hosting, SEO, and CRM tools.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.9s;">
+        <a href="https://prezi.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/prezi.com" alt="Prezi Logo" />
+          <h2>Prezi</h2>
+          <p class="price">Pricing: Free plan, Plus from $15/month</p>
+          <p class="description">Interactive AI-enhanced presentation platform creating zoomable dynamic slides suitable for storytelling.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 1.95s;">
+        <a href="https://pitch.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/pitch.com" alt="Pitch Logo" />
+          <h2>Pitch</h2>
+          <p class="price">Pricing: Free plan, Pro from $20/month</p>
+          <p class="description">Collaborative presentation tool with templates, real-time teamwork, and AI design suggestions.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2s;">
+        <a href="https://www.popai.pro" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/popai.pro" alt="PopAi Logo" />
+          <h2>PopAi</h2>
+          <p class="price">Pricing: Free plan, Pro from $14.99/month</p>
+          <p class="description">AI platform creating presentations, documents, visual content integrating text generation and images.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.05s;">
+        <a href="https://slidesai.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/slidesai.io" alt="Slides AI Logo" />
+          <h2>Slides AI</h2>
+          <p class="price">Pricing: Free plan, Pro from $10/month</p>
+          <p class="description">Google Slides add-on that generates slide decks from text input with layouts and visuals suggestions.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.1s;">
+        <a href="https://slidebean.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/slidebean.com" alt="Slidebean Logo" />
+          <h2>Slidebean</h2>
+          <p class="price">Pricing: Free plan, Premium from $24/month</p>
+          <p class="description">AI-driven presentation platform creating investor pitch decks and professional slides with analytics.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.15s;">
+        <a href="https://textblaze.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/textblaze.com" alt="Textblaze Logo" />
+          <h2>Textblaze</h2>
+          <p class="price">Pricing: Free plan, Pro from $6.99/month</p>
+          <p class="description">AI-powered text expansion with customizable snippets integrated into browsers and apps.</p>
+        </a>
+      </div>
+      <div class="tool" style="--delay: 2.2s;">
+        <a href="https://deepgram.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/deepgram.com" alt="Deepgram Logo" />
+          <h2>Deepgram</h2>
+          <p class="price">Pricing: Pay-as-you-go, from $0.004/minute</p>
+          <p class="description">AI-powered speech-to-text and text-to-speech platform for transcription and voice generation supporting multiple languages and industries.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.25s;">
+        <a href="https://www.tidio.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/tidio.com" alt="Tidio Logo" />
+          <h2>Tidio</h2>
+          <p class="price">Pricing: Free plan, Starter from $29/month</p>
+          <p class="description">AI customer service platform with real-time chatbots for e-commerce and messaging integrations.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.3s;">
+        <a href="https://hiverhq.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/hiverhq.com" alt="Hiver Logo" />
+          <h2>Hiver</h2>
+          <p class="price">Pricing: Free plan, Lite from $24/user/month</p>
+          <p class="description">AI-powered email management for teams with shared inboxes, summarization, and task automation within Gmail.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.35s;">
+        <a href="https://www.voc.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/voc.ai" alt="VocAI Logo" />
+          <h2>VocAI</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI tool for customer sentiment monitoring and feedback analysis from multiple platforms, providing actionable insights.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.4s;">
+        <a href="https://reply.io" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/reply.io" alt="Reply.io Logo" />
+          <h2>Reply.io</h2>
+          <p class="price">Pricing: Free plan, Pro from $59/month</p>
+          <p class="description">AI sales outreach tool automating personalized emails, follow-ups, and calls with CRM integration.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.45s;">
+        <a href="https://talkstack.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/talkstack.ai" alt="TalkStack AI Logo" />
+          <h2>TalkStack AI</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI platform automating customer support, lead qualification, and scheduling with scalable chatbot technology.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.5s;">
+        <a href="https://textio.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/textio.com" alt="Textio Logo" />
+          <h2>Textio</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI-powered recruitment communication platform optimizing job postings for inclusivity and candidate engagement.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.55s;">
+        <a href="https://www.cvviz.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/cvviz.com" alt="CVViZ Logo" />
+          <h2>CVViZ</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI recruitment platform automating job posting, resume screening, and candidate matching to speed hiring.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.6s;">
+        <a href="https://gamma.app" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/gamma.app" alt="Gamma Logo" />
+          <h2>Gamma</h2>
+          <p class="price">Pricing: Free plan, Plus from $10/month</p>
+          <p class="description">AI-powered tool for creating presentations, documents, and webpages with clean, auto-formatted layouts.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.65s;">
+        <a href="https://www.presentations.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/presentations.ai" alt="Presentations.ai Logo" />
+          <h2>Presentations.ai</h2>
+          <p class="price">Pricing: Pro from $198/year</p>
+          <p class="description">AI platform for professional presentations with templates, content suggestions, collaboration, and analytics.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.7s;">
+        <a href="https://aippt.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/aippt.com" alt="AiPPT Logo" />
+          <h2>AiPPT</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI tool generating PowerPoint and Google Slides presentations from text prompts with design suggestions.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.75s;">
+        <a href="https://www.tealhq.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/tealhq.com" alt="Teal Logo" />
+          <h2>Teal</h2>
+          <p class="price">Pricing: Free plan, Teal+ from $29/month</p>
+          <p class="description">Resume builder using AI to tailor resumes with keywords and provide feedback; includes cover letter and job tracker.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.8s;">
+        <a href="https://www.kickresume.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/kickresume.com" alt="Kickresume Logo" />
+          <h2>Kickresume</h2>
+          <p class="price">Pricing: Free plan, Premium from $19/month</p>
+          <p class="description">AI-powered resume and cover letter builder offering ATS-optimized templates and real-time feedback.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.85s;">
+        <a href="https://www.remove.bg" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/remove.bg" alt="Remove.bg Logo" />
+          <h2>Remove.bg</h2>
+          <p class="price">Pricing: Free plan, Pro from $9/month</p>
+          <p class="description">AI tool for automatic background removal from images, with high-quality cutouts and batch processing.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.9s;">
+        <a href="https://stability.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/stability.ai" alt="Stability AI Logo" />
+          <h2>Stability AI</h2>
+          <p class="price">Pricing: Free plan, Pro from $20/month</p>
+          <p class="description">Open-source AI platform powering Stable Diffusion for image generation and data insights.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 2.95s;">
+        <a href="https://designer.microsoft.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Designer Logo" />
+          <h2>Microsoft Designer</h2>
+          <p class="price">Pricing: Free plan, Premium via Microsoft 365</p>
+          <p class="description">AI-powered design tool integrated with Microsoft 365, offering templates, image generation, and text-to-visual.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3s;">
+        <a href="https://www.uipath.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/uipath.com" alt="UiPath Logo" />
+          <h2>UiPath</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">Leading RPA platform with AI to automate repetitive enterprise tasks like data entry and logistics.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.05s;">
+        <a href="https://www.automationanywhere.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/automationanywhere.com" alt="Automation Anywhere Logo" />
+          <h2>Automation Anywhere</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">RPA and AI solution automating business processes such as invoice management and customer service.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.1s;">
+        <a href="https://www.blueprism.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/blueprism.com" alt="Blue Prism Logo" />
+          <h2>Blue Prism</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">Enterprise RPA provider with AI capabilities, supporting scalable and compliant workflow automation.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.15s;">
+        <a href="https://www.workfusion.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/workfusion.com" alt="WorkFusion Logo" />
+          <h2>WorkFusion</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">Combines AI and RPA to automate complex processes like customer onboarding and document processing.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.2s;">
+        <a href="https://www.kofax.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/kofax.com" alt="Kofax Logo" />
+          <h2>Kofax</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI-driven document and workflow automation used to streamline operational efficiency across industries.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.25s;">
+        <a href="https://www.pega.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/pega.com" alt="Pega Systems Logo" />
+          <h2>Pega Systems</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI-powered customer engagement and process automation solutions improving workflows at enterprise scale.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.3s;">
+        <a href="https://www.appian.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/appian.com" alt="Appian Logo" />
+          <h2>Appian</h2>
+          <p class="price">Pricing: Free plan, Standard from $75/month</p>
+          <p class="description">Low-code AI platform accelerating rapid app development and automation for enterprises and complex workflows.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.35s;">
+        <a href="https://www.nice.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/nice.com" alt="NICE Logo" />
+          <h2>NICE</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI-driven automation solutions for contact centers enhancing customer service through chatbots and analytics.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.4s;">
+        <a href="https://www.celonis.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/celonis.com" alt="Celonis Logo" />
+          <h2>Celonis</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI process mining and automation platform optimizing workflows and improving decision-making for enterprises.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.45s;">
+        <a href="https://www.claralabs.com" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/claralabs.com" alt="Clara Labs Logo" />
+          <h2>Clara Labs</h2>
+          <p class="price">Pricing: See website</p>
+          <p class="description">AI-powered meeting scheduling automation used by large teams to manage complex calendars efficiently.</p>
+        </a>
+      </div>
+
+      <div class="tool" style="--delay: 3.5s;">
+        <a href="https://suno.ai" class="tool-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://logo.clearbit.com/suno.ai" alt="Suno Logo" />
+          <h2>Suno</h2>
+          <p class="price">Pricing: Free (50 credits/day), Pro from $8/month</p>
+          <p class="description">AI-powered music creator generating original songs from text prompts, designed for creators and marketers.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
